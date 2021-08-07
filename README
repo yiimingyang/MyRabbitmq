@@ -1,0 +1,13 @@
+This is my Rabbitmq-deployed-in-Docker project
+
+MyRabbitMq
+|____README
+|____docker-compose.yml
+|____rabbit-consumer
+|	|____Dockerfile
+|	|____consumer.py
+|	|____requirements.txt
+|____rabbit-producer
+	|____Dockerfile
+	|____producer.py
+	|____requirements.txt

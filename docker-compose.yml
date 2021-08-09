@@ -7,39 +7,23 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
-    networks:
-      - rabbit-net
 
   consumer:
-    image: python:3.7
+    image: python:3.7-alpine
     container_name: rabbit_consumer_container
-    build:
-      context: ./rabbitmq-consumer
-      dockerfile: Dockerfile
-    command: python3 consumer.py
+    build: ./rabbitmq-consumer
     depends_on:
       - rabbitmq-container
     tty: true
-    networks:
-      - rabbit-net
     restart: on-failure
 
   producer:
-    image: python:3.9
+    image: python:3.9-alpine
     container_name: rabbit_producer_container
-    build:
-      context: ./rabbitmq-producer
-      dockerfile: Dockerfile
-    command: python3 producer.py
+    build: ./rabbitmq-producer
     depends_on:
-      - consumer
+      - rabbitmq-container
     tty: true
-    networks:
-      - rabbit-net
     restart: on-failure
 
-networks:
-  rabbit-net:
-    external: true
-    name: rabbit-net
 

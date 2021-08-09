@@ -1,14 +1,14 @@
-FROM python:3.9
+FROM python:3.9-alpine
 
-#WORKDIR /usr/src/app/producer
+WORKDIR /usr/src/app/producer
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-#ENTRYPOINT ["producer.py"]
+ENTRYPOINT ["python3","producer.py"]
 
-CMD [ "python3","producer.py" ]
+#CMD [ "python3","producer.py" ]
 
 

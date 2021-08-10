@@ -1,13 +1,21 @@
 This is my Rabbitmq-deployed-in-Docker project
+This branch is about deploy WorkQueues in Docker
+The docker-compose.yml file create three containers: one tasker and two works, the three
+containers use the same python:3.7-alpine image, and the two workers have the same Dockerfile,
+actually the app create two containers based on one Dockerfile:
+
+worker folder ____build____-> worker image ______build_____--> worker container1
+                                                           |__-->worker container2
 
 MyRabbitMq
 |____README
 |____docker-compose.yml
-|____rabbit-consumer
+|____task-worker
 |	|____Dockerfile
-|	|____consumer.py
+|	|____taskworker.py
 |	|____requirements.txt
-|____rabbit-producer
+|____task-producer
 	|____Dockerfile
-	|____producer.py
+	|____taskproducer.py
 	|____requirements.txt
+	|____task_command.sh

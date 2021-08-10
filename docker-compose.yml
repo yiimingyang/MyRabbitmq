@@ -9,6 +9,7 @@ services:
       - "5672:5672"
 
   worker1:
+    image: python:3.7-alpine
     build: ./task-worker
     command: python3 taskworker.py
     depends_on:
@@ -17,10 +18,11 @@ services:
     restart: on-failure
 
   worker2:
-    build: ./task-worker
+    #build: ./task-worker
+    image: python:3.7-alpine
     command: python3 taskworker.py
     depends_on:
-      - rabbitmq-container
+      - worker1
     tty: true
     restart: on-failure
 

@@ -8,17 +8,26 @@ services:
       - "15672:15672"
       - "5672:5672"
 
-  consumer:
-    build: ./rabbitmq-consumer
-    command: python3 consumer.py
+  worker1:
+    build: ./task-worker
+    command: python3 taskworker.py
     depends_on:
       - rabbitmq-container
     tty: true
     restart: on-failure
 
-  producer:
-    build: ./rabbitmq-producer
-    command: python3 producer.pyr
+  worker2:
+    build: ./task-worker
+    command: python3 taskworker.py
+    depends_on:
+      - rabbitmq-container
+    tty: true
+    restart: on-failure
+
+
+  tasker:
+    build: ./task-producer
+    command: python3 taskproducer.py
     depends_on:
       - rabbitmq-container
     tty: true

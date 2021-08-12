@@ -8,17 +8,18 @@ services:
       - "15672:15672"
       - "5672:5672"
 
-  consumer:
-    build: ./rabbitmq-consumer
-    command: python3 consumer.py
+  subscriber1:
+    build: ./sub
+    command: python3 subscriber.py
     depends_on:
       - rabbitmq-container
     tty: true
     restart: on-failure
 
-  producer:
-    build: ./rabbitmq-producer
-    command: python3 producer.pyr
+
+  publisher:
+    build: ./pub
+    command: python3 publisher.py
     depends_on:
       - rabbitmq-container
     tty: true

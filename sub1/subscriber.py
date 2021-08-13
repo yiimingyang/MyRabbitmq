@@ -4,12 +4,13 @@ connection = pika.BlockingConnection(
     pika.ConnectionParameters(host='rabbitmq-container'))
 channel = connection.channel()
 
-channel.exchange_declare(exchange='logs', exchange_type='fanout')
+channel.exchange_declare(exchange='logs_multi', exchange_type='direct')
 
 result = channel.queue_declare(queue='', exclusive=True)
 queue_name = result.method.queue
 
-channel.queue_bind(exchange='logs', queue=queue_name)
+channel.queue_bind(exchange='logs_multi', queue=queue_name, routing_key='logs_from_pub1')
+channel.queue_bind(exchange='logs_multi', queue=queue_name, routing_key='logs_from_pub2')
 
 print(' [*] Waiting for logs. To exit press CTRL+C')
 

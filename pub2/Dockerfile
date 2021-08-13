@@ -1,6 +1,6 @@
 FROM python:3.7-alpine
 
-WORKDIR /usr/src/app/pubwork
+WORKDIR /usr/src/app/pubwork2
 
 COPY requirements.txt ./
 
@@ -12,4 +12,4 @@ COPY . .
 
 #ENTRYPOINT ["sh","./pub_message.sh"]
 
-ENTRYPOINT ["python3","publisher.py","This is a message about pub/sub"]
+ENTRYPOINT ["python3","publisher.py","This is a message from PUB2"]

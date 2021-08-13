@@ -3,11 +3,11 @@ This is my Rabbitmq-deployed-in-Docker project
 MyRabbitMq
 |____README
 |____docker-compose.yml
-|____rabbit-consumer
+|____sub
 |	|____Dockerfile
-|	|____consumer.py
+|	|____subscriber.py
 |	|____requirements.txt
-|____rabbit-producer
+|____pub
 	|____Dockerfile
-	|____producer.py
+	|____publisher.py
 	|____requirements.txt

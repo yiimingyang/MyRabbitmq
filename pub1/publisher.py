@@ -7,6 +7,7 @@ connection = pika.BlockingConnection(
 channel = connection.channel()
 
 channel.exchange_declare(exchange='logs_multi', exchange_type='direct')
+channel.queue_declare(queue='queue_pub1')
 
 message = ' '.join(sys.argv[1:]) or "info: Hello World from PUB1!"
 while True:

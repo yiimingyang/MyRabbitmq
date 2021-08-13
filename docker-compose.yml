@@ -16,6 +16,13 @@ services:
     tty: true
     restart: on-failure
 
+  subscriber2:
+    build: ./sub
+    command: python3 subscriber.py
+    depends_on:
+      - rabbitmq-container
+    tty: true
+    restart: on-failure
 
   publisher:
     build: ./pub

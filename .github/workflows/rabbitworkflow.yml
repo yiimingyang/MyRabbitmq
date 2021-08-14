@@ -1,7 +1,5 @@
 name: Python RabbitMQ package
-
 on: [push, pull_request]
-
 jobs:
   build:
     runs-on: ${{matrix.os}}
@@ -13,8 +11,7 @@ jobs:
           - os: macos-latest
             python-version: 3.6, 3.8, 3.9
           - os: windows-latest
-            python-version: 3.6, 3.8, 3.9
-          
+            python-version: 3.6, 3.8, 3.9        
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}

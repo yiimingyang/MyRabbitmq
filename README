@@ -1,13 +1,25 @@
 This is my Rabbitmq-deployed-in-Docker project
 
+The app use the same exchange and different queues as well as two different
+"routing_key" to make sure that sub1 can receive message from pub2 and sub2
+can receive message from pub1.
+ 
 MyRabbitMq
 |____README
 |____docker-compose.yml
-|____rabbit-consumer
+|____sub1
 |	|____Dockerfile
-|	|____consumer.py
+|	|____subscriber.py
 |	|____requirements.txt
-|____rabbit-producer
+|____sub2
+|	|____Dockerfile
+|	|____subscriber.py
+|	|____requirements.txt
+|____pub1
+|	|____Dockerfile
+|	|____publisher.py
+|	|____requirements.txt
+|____pub2
 	|____Dockerfile
-	|____producer.py
+	|____publisher.py
 	|____requirements.txt

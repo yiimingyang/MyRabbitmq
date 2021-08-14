@@ -1,5 +1,6 @@
-import pika, sys, os
-
+import pika
+import sys
+import os
 
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq-container'))
@@ -14,6 +15,7 @@ def main():
 
     print(' [*] Waiting for messages. To exit press CTRL+C')
     channel.start_consuming()
+
 
 if __name__ == '__main__':
     try:

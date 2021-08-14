@@ -1,13 +1,24 @@
 This is my Rabbitmq-deployed-in-Docker project
 
+The app use two exchanges in pub1 and one exchange in pub2, to make sure that sub1 can receive message from pub2 and sub2
+can receive message from both pub1 and pub_extra in pub1.
+ 
 MyRabbitMq
 |____README
 |____docker-compose.yml
-|____rabbit-consumer
+|____sub1
 |	|____Dockerfile
-|	|____consumer.py
+|	|____subscriber.py
 |	|____requirements.txt
-|____rabbit-producer
+|____sub2
+|	|____Dockerfile
+|	|____subscriber.py
+|	|____requirements.txt
+|____pub1
+|	|____Dockerfile
+|	|____publisher.py
+|	|____requirements.txt
+|____pub2
 	|____Dockerfile
-	|____producer.py
+	|____publisher.py
 	|____requirements.txt

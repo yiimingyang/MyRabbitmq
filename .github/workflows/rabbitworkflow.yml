@@ -29,6 +29,8 @@ jobs:
         run: docker-compose up -d --build
       - name: checking running status of containers
         run: docker ps -a
+      - name: check logs
+        run: docker logs backend
 #      - name: Test with pytest
 #        run: |
 #          pytest

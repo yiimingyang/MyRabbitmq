@@ -1,7 +1,0 @@
-# action.yml
-name: 'Hello RabbitMQ and Workflow'
-description: 'Run RabbitMQ in Workflow'
-runs:
-  using: 'docker'
-  image: 'docker-compose.yml'
-

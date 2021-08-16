@@ -26,11 +26,12 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       #- uses: actions/checkout@v1
       - name: Run RabbitMQ with docker-compose file
-        run: docker-compose up -d --build
+        #run: docker-compose up -d --build
+        run: docker-compose up
       - name: check running status of containers
         run: docker ps -a
-      - name: check logs
-        run: docker-compose logs -t -f --tail 20
+      #- name: check logs
+      #  run: docker-compose logs -t -f --tail 20
       - name: Stop docker
         run: docker-compose down
         

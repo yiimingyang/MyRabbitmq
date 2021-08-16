@@ -26,7 +26,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - uses: actions/checkout@v1
       - name: Run RabbitMQ with docker-compose file
-        run: docker-compose up -d -build
+        run: docker-compose up -d --build
              
 #      - name: Test with pytest
 #        run: |

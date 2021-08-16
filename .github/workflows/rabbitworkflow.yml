@@ -30,7 +30,7 @@ jobs:
       - name: checking running status of containers
         run: docker ps -a
       - name: check logs
-        run: docker logs backend
+        run: docker service logs
 #      - name: Test with pytest
 #        run: |
 #          pytest

@@ -31,6 +31,8 @@ jobs:
         run: docker ps -a
       - name: check logs
         run: docker-compose logs -t -f --tail 20
+      - name: Stop docker
+        run: docker-compose down
         
 #      - name: Test with pytest
 #        run: |

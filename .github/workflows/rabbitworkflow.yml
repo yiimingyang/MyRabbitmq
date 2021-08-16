@@ -27,7 +27,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run RabbitMQ with docker-compose file
         run: docker-compose up -d --build
-             
+      - name: checking running status of containers
+        run: docker ps -a
 #      - name: Test with pytest
 #        run: |
 #          pytest

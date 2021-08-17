@@ -46,12 +46,12 @@ jobs:
       - name: Stop docker
         run: docker-compose down      
    
-      - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: yimingyang/rabbitmq
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      #- name: Publish to Registry
+      #  uses: elgohr/Publish-Docker-Github-Action@master
+      #  with:
+      #    name: yimingyang/rabbitmq
+      #    username: ${{ secrets.DOCKER_HUB_USERNAME }}
+      #    password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
    
    
 #      - name: Test with pytest

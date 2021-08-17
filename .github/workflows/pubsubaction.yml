@@ -13,11 +13,19 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+    
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_yimingyang }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
@@ -25,16 +33,27 @@ jobs:
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       #- uses: actions/checkout@v1
+      
       - name: Run RabbitMQ with docker-compose file
         run: docker-compose up -d --build
         #run: docker-compose up --build
+        
       - name: check running status of containers
         run: docker ps -a
       #- name: check logs
       #  run: docker-compose logs -t -f --tail 20
+      
       - name: Stop docker
         run: docker-compose down
-        
+      
+      - name: push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_yimingyang }}/rabbitmq-pub-sub:latest
+      
 #      - name: Test with pytest
 #        run: |
 #          pytest

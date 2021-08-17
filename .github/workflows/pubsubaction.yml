@@ -52,7 +52,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_yimingyang }}/rabbitmq-pub-sub:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/rabbitmq-pub-sub:latest
    
 #      - name: Test with pytest
 #        run: |
